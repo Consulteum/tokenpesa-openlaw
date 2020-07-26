@@ -12,3 +12,5 @@ To access the open banking templates, create your OpenLaw account here: https://
 4. Mint Template - https://u0f1lnhwzl:UaAgnHjjpRPnDwRPdL7MMi4ad0g52hTOECwDotg4uGA@u0hxx29zmx-u0igpiffyv-openlaw.us-east-2-svcs.kaleido.io/template/WRAPPED%20KSH%20(WKSH)%20MINT%20%20TEMPLATE
 
 5. Sale Template - https://u0f1lnhwzl:UaAgnHjjpRPnDwRPdL7MMi4ad0g52hTOECwDotg4uGA@u0hxx29zmx-u0igpiffyv-openlaw.us-east-2-svcs.kaleido.io/template/%20WRAPPED%20KSH%20(WKSH)%20DEAL%20SH%20-%20SALE%20TEMPLATE
+
+This repository by PoweHub Consultants Ltd is licensed under the Apache 2.0 Open source licence
