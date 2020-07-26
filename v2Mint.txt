@@ -1,0 +1,755 @@
+﻿<%
+[[Custodian Address: EthAddress]]
+[[Agent Address: EthAddress]]
+
+[[Currency: Text(
+options: "KSH", "USD", "EUR", "YUAN", "YEN", "WON"
+)]]
+
+[[Another Currency]]
+
+[[Currency: Text(
+options: "KSH", "USD", "EUR", "YUAN", "YEN", "WON", Another Currency
+)]]
+
+[[Mint Amount: Number]]
+
+[[Exchange Rate: Number]]
+
+[[Payment Method: Text(
+options: "Transfer Wise"
+)]]
+
+
+[[@Mint Amount in Wei = Mint Amount * Exchange Rate * 1000000000000000000]]
+[[@Pay Amount =  Mint Amount  + (0.045 * Mint Amount)]]
+
+[[Record Contract:EthereumCall(
+contract: "0xbd1a35BbD7a23aE6A2EF04BFafcC519C24A1035e";
+interface:[
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "supply",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalMints",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "initializeMint",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "newDAO",
+				"type": "address"
+			}
+		],
+		"name": "setDAOaddress",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "custodian",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "rep",
+				"type": "uint256"
+			}
+		],
+		"name": "setMinREPutation",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "pendingBurnTotal",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "wkshconstant",
+				"type": "uint256"
+			}
+		],
+		"name": "setConstantWKSH",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalBurns",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "mint",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "constantWKSH",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "who",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "currentSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "burn",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "DAO",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "initializeBurn",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "reputation",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "newMinter",
+				"type": "address"
+			}
+		],
+		"name": "transferCustodianship",
+		"outputs": [
+			{
+				"name": "ok",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "pendingMintTotal",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_owner",
+				"type": "address"
+			},
+			{
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"name": "_allowance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "minReputation",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "dOrg",
+				"type": "address"
+			},
+			{
+				"name": "minREP",
+				"type": "uint256"
+			},
+			{
+				"name": "constWKSH",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newTokenHolder",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amountOfTokens",
+				"type": "uint256"
+			}
+		],
+		"name": "TokenMint",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newTokenHolder",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amountOfTokens",
+				"type": "uint256"
+			}
+		],
+		"name": "Mint",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newTokenHolder",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amountOfTokens",
+				"type": "uint256"
+			}
+		],
+		"name": "Burn",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "prevMinter",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "nextMinter",
+				"type": "address"
+			}
+		],
+		"name": "MinterTransfered",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "agent",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "MintInitialized",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "agent",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "BurnInitialized",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "caller",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "DAOaddress",
+				"type": "address"
+			}
+		],
+		"name": "DAOset",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "rep",
+				"type": "uint256"
+			}
+		],
+		"name": "MinREPutationSet",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "rep",
+				"type": "uint256"
+			}
+		],
+		"name": "constantWKSHset",
+		"type": "event"
+	}
+];
+
+function:"initializeMint";
+arguments: Mint Amount in Wei)]]
+%>
+
+
+
+\centered ** WRAPPED KSH (WKSH) MINT TEMPLATE **
+
+This WRAPPED KSH (WKSH) MINT CONTRACT dated [[Effective Date: Date]] (the "Agreement") is made by and between [[Custodian Name]] ("Custodian"), represented by the Ethereum Address [[Custodian Address]] (the "Custodian") and [[Agent Name]] represented by the Ethereum Address [[Agent Address]] (the "Agent"), (Agent and Custodian being hereafter, from time to time, referred to as the "Parties").
+
+[[Record Contract]]
+
+		RECITALS
+
+WHEREAS, each Wrapped KSH (WKSH) token represents 1 (one) Kenya Shilling stored in an offshore bank account by PowerHub Consultants Ltd (the "Custodian"), located in Nairobi, Kenya. PowerHub Consultants Ltd shall conduct and publish quarterly proof of reserves done by an independent auditor such that to ascertain the 1:1 KSH to WKSH reserves backing is honored.
+
+WHEREAS, 1 (one) WKSH token subject to the terms and conditions set forth below, maybe exchanged for 1(one) Kenya Shilling held in reserve at PowerHub Consultants Ltd (the "Custodian").
+
+
+NOW THEREFORE, it is agreed as follows:
+
+1. Custodian hereby grants to facilitate mint of [[Exchange Amount]] WKSH tokens to 0x[[Agent Address]] ** under the terms sufficiently described below:
+
+
+The Custodian at Ethereum address 0x[[Custodian Address]] ("Custodian") agree to initialize minting of [[Exchange Amount]] WKSH Tokens associated with the following Ethereum address: 0xbd1a35BbD7a23aE6A2EF04BFafcC519C24A1035e. Upon prompt payment of [[Pay Amount]] [[Currency]] to the Custodian, the Custodian shall effectively complete minting of [[Exchange Amount]] WKSH to 0x[[Agent Address]].
+
+The Agent has agreed to proceed with minting of [[Exchange Amount]] WKSH for prompt payment of [[Pay Amount]] [[Currency: Text(options: "KSH")]] to be completed via [[Payment Method: Text(options: "MPESA", "Transfer Wise", "Bank Account")]]. The [[Pay Amount]] [[Currency]] payment is inclusive of a Custodian mint fee amounting to 4.5%.
+
+2. Governing Law. Arbitration of This Agreement and the rights and obligations of the Parties hereto shall be governed by and construed and enforced in accordance with the laws of the Republic of [[Governing Law]].
+
+3. Disputes. Arbitration. Any controversy, claim or dispute arising out of or relating to this Agreement, shall be settled by binding arbitration in [[Governing Law]].
+
+CUSTODIAN AND AGENT SHALL BE RESPONSIBLE FOR THEIR OWN COSTS FOR EXECUTING BLOCKCHAIN TRANSACTIONS ON ETHEREUM TO FULFILL THIS WRAPPED KSH (WKSH) MINT CONTRACT, WHICH CONSTITUTES THE ENTIRE AGREEMENT BETWEEN CUSTODIAN AND AGENT. IF ANY PROVISION OF THIS WRAPPED KSH (WKSH) MINT CONTRACT IS HELD TO UNENFORCEABLE, CUSTODIAN AND AGENT WISH THAT THE REMAINING PROVISIONS CONTINUE TO BE ENFORCED. THE TERMS OF THIS AGREEMENT SHALL BE INTERPRETED BY THE LOCAL LAWS OF THE CUSTODIAN'S JURISDICTION. ANY DISPUTES ARISING OUT OF THIS WRAPPED KSH (WKSH) MINT CONTRACT SHALL BE RESOLVED UNDER THE RULES AND BY THE ARBITRATOR ETHEREUM ADDRESS SELECTED HEREBY AND ENCODED IN THE SMART CONTRACT GENERATED BY EXECUTION OF THIS AGREEMENT.
+
+
+4. Entire Agreement. This Agreement constitutes the entire agreement of the Parties regarding the subject matter hereof, and supersedes all prior agreements and understandings, both written and oral, among the Parties, with respect to the subject matter hereof.
+
+
+
+IN WITNESS WHEREOF, the Parties have signed this WRAPPED KSH (WKSH) MINT CONTRACT on
+the date first written above.
+
+
+CUSTODIAN:
+[[Custodian Signatory Email: Identity | Signature]]
+________________
+
+AGENT:
+[[Agent Signatory Email: Identity | Signature]]
+________________

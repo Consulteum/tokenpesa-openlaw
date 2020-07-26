@@ -1,0 +1,209 @@
+﻿
+
+<%
+[[Agent Address: EthAddress]]
+[[User Address: EthAddress]]
+
+[[Arbitrator Fee: Number]]
+
+[[Deposit Amount: Number]]
+[[Escrow Description]]
+
+[[Withdraw Amount: Number]]
+
+[[Exchange Rate: Number]]
+
+[[@Withdraw Amount in Wei = Withdraw Amount * Exchange Rate * 1000000000000000000]]
+[[@Pay Amount =  Withdraw Amount - (0.075 * Withdraw Amount)]]
+
+[[Record Contract:EthereumCall(
+contract: "0xB80e305622ad74dF43f8874050C7A8C6F9CB5fA8";
+interface:[
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "contracts",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "validContracts",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "_tokenContract",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getContractCount",
+		"outputs": [
+			{
+				"name": "contractCount",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getDeployedContracts",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_descr",
+				"type": "string"
+			},
+			{
+				"name": "_price",
+				"type": "uint256"
+			},
+			{
+				"name": "_buyer",
+				"type": "address"
+			},
+			{
+				"name": "_seller",
+				"type": "address"
+			},
+			{
+				"name": "_arbiterFee",
+				"type": "uint256"
+			}
+		],
+		"name": "newWrappedKSHEscrow",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "wksh",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+]
+;
+network:"Kovan";
+function:"newWrappedKSHEscrow";
+arguments: Escrow Description, Deposit Amount in Wei, User Address, Agent Address, Arbitrator Fee)]]
+%>
+
+
+\centered ** WRAPPED KSH (WKSH) WITHDRAW TEMPLATE **
+
+
+This WRAPPED KSH (WKSH) WITHDRAW CONTRACT dated [[Effective Date: Date]] (the "Agreement") is made by and between [[Agent Name]],  represented by the Ethereum Address [[Agent Address]] (the "Agent") and [[User Name]] represented by the Ethereum Address [[User Address]] (the "User"), (User and Agent being hereafter, from time to time, referred to as the "Parties").
+
+[[Record Contract]]
+
+
+[[Escrow Description]]
+
+(the "Item")
+
+
+
+
+		RECITALS
+
+WHEREAS, each Wrapped KSH (WKSH) token represents 1 (one) Kenya Shilling stored in an offshore bank account by PowerHub Consultants Ltd (the "Custodian"), located in Nairobi, Kenya. PowerHub Consultants Ltd shall conduct and publish quarterly proof of reserves by an independent auditor such that to ascertain the 1:1 KSH to WKSH reserves backing is honored.
+
+WHEREAS, 1 (one) WKSH token subject to the terms and conditions set forth below, maybe exchanged for 1(one) Kenya Shilling held in reserve at PowerHub Consultants Ltd (the "Custodian").
+
+
+
+
+NOW THEREFORE, it is agreed as follows:
+
+1. Agent hereby grants to facilitate withdrawal of [[Withdraw Amount]] WKSH tokens from 0x[[User Address]] ** under the terms sufficiently described below:
+
+The User at Ethereum address 0x[[User Address]] (�User�) agree to escrow the amount of [[Withdraw Amount]] WKSH Tokens associated with the following Ethereum address: 0xbd1a35BbD7a23aE6A2EF04BFafcC519C24A1035e. Upon prompt payment of the [[Pay Amount]] [[Currency]] from the Agent, User shall effectively release escrow of [[Withdraw Amount]] WKSH to 0x[[Agent Address]].
+
+The User has agreed to proceed with withdrawal of [[Withdraw Amount]] WKSH for prompt payment of [[Pay Amount]] [[Currency: Text(options: "KSH", "USD", "EUR", "YUAN", "YEN", "WON")]] to be completed via [[Payment Method: Text(options: "MPESA", "Transfer Wise", "Bank Account")]]. The [[Pay Amount]] [[Currency]] payment is inclusive of a Custodian burn fee amounting to 4.5%, plus an additional agent withdrawal fee amounting to 3%.
+
+2. Governing Law. Arbitration of This Agreement and the rights and obligations of the Parties hereto shall be governed by and construed and enforced in accordance with the laws of the State of [[Governing Law]].
+
+3. Disputes. Arbitration. Any controversy, claim or dispute arising out of or relating to this Agreement, shall be settled by binding arbitration in [[Governing Law]].
+
+AGENT AND USER SHALL BE RESPONSIBLE FOR THEIR OWN COSTS FOR EXECUTING BLOCKCHAIN TRANSACTIONS ON ETHEREUM TO FULFILL THIS WRAPPED KSH (WKSH) WITHDRAW CONTRACT, WHICH CONSTITUTES THE ENTIRE AGREEMENT BETWEEN CUSTODIAN AND USER. IF ANY PROVISION OF THIS WRAPPED KSH (WKSH) WITHDRAW CONTRACT IS HELD TO UNENFORCEABLE, AGENT AND USER WISH THAT THE REMAINING PROVISIONS CONTINUE TO BE ENFORCED. THE TERMS OF THIS AGREEMENT SHALL BE INTERPRETED BY THE LOCAL LAWS OF THE AGENT'S JURISDICTION. ANY DISPUTES ARISING OUT OF THIS WRAPPED KSH (WKSH) WITHDRAW CONTRACT SHALL BE RESOLVED UNDER THE RULES AND BY THE ARBITRATOR ETHEREUM ADDRESS SELECTED HEREBY AND ENCODED IN THE SMART CONTRACT GENERATED BY EXECUTION OF THIS AGREEMENT.
+
+
+4. Entire Agreement. This Agreement constitutes the entire agreement of the Parties regarding the subject matter hereof, and supersedes all prior agreements and understandings, both written and oral, among the Parties, with respect to the subject matter hereof.
+
+
+
+IN WITNESS WHEREOF, the Parties have signed this WITHDRAW WRAPPED KSH CONTRACT on
+the date first written above.
+
+
+AGENT:
+[[Agent Signatory Email: Identity | Signature]]
+________________
+
+USER:
+[[User Signatory Email: Identity | Signature]]
+________________
